@@ -8,12 +8,6 @@ class App extends React.Component {
     };
   }
 
-  // onClickPlayVideo(video) {
-  //   this.setState({
-  //     currentVideo: video
-  //   });
-  // }
-
   onClickPlayVideo(video) {
     this.setState({
       currentVideo: video
