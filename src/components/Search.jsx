@@ -5,7 +5,8 @@ var Search = (props) => {
     <div className="search-bar form-inline" >
       <input className="form-control" type="text" onChange={function(event) { 
         var value = event.target.value;
-        debounceUpdate(value); }}/>
+        debounceUpdate(value); 
+      }}/>
       <button className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
       </button>
@@ -16,17 +17,3 @@ var Search = (props) => {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.Search = Search;
-
-//<input className="form-control" type="text" onChange={props.onChangeCallback}/>
-//var newFunc = _.debounce(props.onChangeCallback, 500, false);
-
-// newFunc();
-
-
-    // <input className="form-control" type="text" onChange={
-    //   function(event) {
-    //     _.debounce(function() { 
-    //       props.onChangeCallback(event);
-    //     }, 500)();
-    //   }
-    // }/>

@@ -4,7 +4,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       allVideos: window.blankVideoData,
-      currentVideo: window.blankVideoData[0]
+      currentVideo: window.blankVideoData[0],
+      autoplay: false
     };
   }
 
@@ -48,12 +49,18 @@ class App extends React.Component {
     this.props.searchYouTube(options, callback);
   }
 
+  onClickToggleButton() {
+    this.setState({
+      autoplay: !this.state.autoplay
+    });
+  }
+
   render() {
     return (
       <div>
-        <Nav onChangeCallback={this.onChangeUpdateVideos.bind(this)}/>
+        <Nav onChangeCallback={this.onChangeUpdateVideos.bind(this)} onClickToggleButton={this.onClickToggleButton.bind(this)}/>
         <div className="col-md-7">
-          <VideoPlayer video={this.state.currentVideo}/>
+          <VideoPlayer video={this.state.currentVideo} autoplay={this.state.autoplay}/>
         </div>
         <div className="col-md-5">
           <VideoList clickCallback={this.onClickPlayVideo.bind(this)} videos={this.state.allVideos}/>
