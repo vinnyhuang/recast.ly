@@ -26,6 +26,10 @@ class App extends React.Component {
     this.props.searchYouTube(options, callback);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.allVideos !== nextState.allVideos || this.state.currentVideo !== nextState.currentVideo;
+  }
+
   onClickPlayVideo(video) {
     this.setState({
       currentVideo: video

@@ -1,6 +1,6 @@
 var Autoplay = (props) => (
   <input type="checkbox" onClick={props.onClickToggleButton}>
-    <label>&nbsp;Autoplay</label>
+    &nbsp;Autoplay
   </input>
 );
 
