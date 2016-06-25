@@ -3,10 +3,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allVideos: exampleVideoData,
-      currentVideo: exampleVideoData[0]
+      allVideos: window.blankVideoData,
+      currentVideo: window.blankVideoData[0]
     };
+  }
 
+  onClickPlayVideo(video) {
+    this.setState({
+      currentVideo: video
+    });
+  }
+
+  componentDidMount() {
     var options = {
       query: 'dog',
       max: 5,
@@ -20,33 +28,8 @@ class App extends React.Component {
       });
     };
 
-    console.log('mount function exectued');
     this.props.searchYouTube(options, callback);
   }
-
-  onClickPlayVideo(video) {
-    this.setState({
-      currentVideo: video
-    });
-  }
-
-  // componentDidMount() {
-  //   var options = {
-  //     query: 'dog',
-  //     max: 5,
-  //     key: YOUTUBE_API_KEY
-  //   };
-
-  //   var callback = videos => {
-  //     this.setState({
-  //       allVideos: videos,
-  //       currentVideo: videos[0]
-  //     });
-  //   };
-
-  //   console.log('mount function exectued');
-  //   this.props.searchYouTube(options, callback);
-  // }
 
   render() {
     return (
