@@ -8,12 +8,6 @@ class App extends React.Component {
     };
   }
 
-  onClickPlayVideo(video) {
-    this.setState({
-      currentVideo: video
-    });
-  }
-
   componentDidMount() {
     var options = {
       query: 'dog',
@@ -31,10 +25,33 @@ class App extends React.Component {
     this.props.searchYouTube(options, callback);
   }
 
+  onClickPlayVideo(video) {
+    this.setState({
+      currentVideo: video
+    });
+  }
+
+  onChangeUpdateVideos(event) {
+    var options = {
+      query: event.target.value,
+      max: 5,
+      key: YOUTUBE_API_KEY
+    };
+
+    var callback = videos => {
+      this.setState({
+        allVideos: videos,
+        currentVideo: videos[0]
+      });
+    };
+
+    this.props.searchYouTube(options, callback);
+  }
+
   render() {
     return (
       <div>
-        <Nav />
+        <Nav onChangeCallback={this.onChangeUpdateVideos.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
