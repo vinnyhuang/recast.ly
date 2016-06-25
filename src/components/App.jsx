@@ -31,9 +31,9 @@ class App extends React.Component {
     });
   }
 
-  onChangeUpdateVideos(event) {
+  onChangeUpdateVideos(value) {
     var options = {
-      query: event.target.value,
+      query: value,
       max: 5,
       key: YOUTUBE_API_KEY
     };
