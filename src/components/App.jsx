@@ -6,6 +6,22 @@ class App extends React.Component {
       allVideos: exampleVideoData,
       currentVideo: exampleVideoData[0]
     };
+
+    var options = {
+      query: 'dog',
+      max: 5,
+      key: YOUTUBE_API_KEY
+    };
+
+    var callback = videos => {
+      this.setState({
+        allVideos: videos,
+        currentVideo: videos[0]
+      });
+    };
+
+    console.log('mount function exectued');
+    this.props.searchYouTube(options, callback);
   }
 
   onClickPlayVideo(video) {
@@ -13,6 +29,24 @@ class App extends React.Component {
       currentVideo: video
     });
   }
+
+  // componentDidMount() {
+  //   var options = {
+  //     query: 'dog',
+  //     max: 5,
+  //     key: YOUTUBE_API_KEY
+  //   };
+
+  //   var callback = videos => {
+  //     this.setState({
+  //       allVideos: videos,
+  //       currentVideo: videos[0]
+  //     });
+  //   };
+
+  //   console.log('mount function exectued');
+  //   this.props.searchYouTube(options, callback);
+  // }
 
   render() {
     return (
